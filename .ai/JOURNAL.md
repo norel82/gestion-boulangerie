@@ -11,4 +11,5 @@
 
 ## 2026-10-30 (suite)
 - Étape 2 validée : `app.js` avec constantes métier (`STORAGE_KEY`, `DEFAULT_RATE`, `SUNDAY_BONUS`), modèle `{ rate, days[] }`, `load/save` localStorage `boulangerie_hours`, normalisation/tri des données importées. Commit `e2f7014`.
-- Étape 3 validée : navigation mensuelle (état `currentMonth`, `addMonths`, label français, boutons précédent/suivant). Commit à venir.
+- Étape 3 validée : navigation mensuelle (état `currentMonth`, `addMonths`, label français, boutons précédent/suivant). Commit `40408d0`.
+- Étape 4 validée : calculs purs (`dayDurationMinutes` avec passage minuit, `formatDuration`, `startOfWeek` lundi, `isSunday`, `dayPay` majoration 20 %, `computeMonthTotals`, `computeCurrentWeekTotals`, `groupDaysByWeek`). Tests Node OK. Commit à venir.
