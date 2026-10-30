@@ -10,4 +10,5 @@
   - `5d6ea2c` feat: squelette UI index.html
 
 ## 2026-10-30 (suite)
-- Étape 2 validée : `app.js` avec constantes métier (`STORAGE_KEY`, `DEFAULT_RATE`, `SUNDAY_BONUS`), modèle `{ rate, days[] }`, `load/save` localStorage `boulangerie_hours`, normalisation/tri des données importées. Commit à venir.
+- Étape 2 validée : `app.js` avec constantes métier (`STORAGE_KEY`, `DEFAULT_RATE`, `SUNDAY_BONUS`), modèle `{ rate, days[] }`, `load/save` localStorage `boulangerie_hours`, normalisation/tri des données importées. Commit `e2f7014`.
+- Étape 3 validée : navigation mensuelle (état `currentMonth`, `addMonths`, label français, boutons précédent/suivant). Commit à venir.

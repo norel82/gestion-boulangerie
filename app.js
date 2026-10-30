@@ -4,6 +4,22 @@
     const STORAGE_KEY = 'boulangerie_hours';
     const DEFAULT_RATE = 0;
     const SUNDAY_BONUS = 0.2;
+    const MONTH_NAMES = [
+        'janvier',
+        'février',
+        'mars',
+        'avril',
+        'mai',
+        'juin',
+        'juillet',
+        'août',
+        'septembre',
+        'octobre',
+        'novembre',
+        'décembre'
+    ];
+
+    let currentMonth = startOfMonth(new Date());
 
     function createId() {
         if (window.crypto && typeof window.crypto.randomUUID === 'function') {
@@ -105,6 +121,47 @@
         }
     }
 
+    function startOfMonth(date) {
+        return new Date(date.getFullYear(), date.getMonth(), 1);
+    }
+
+    function addMonths(date, delta) {
+        return new Date(date.getFullYear(), date.getMonth() + delta, 1);
+    }
+
+    function formatMonthLabel(date) {
+        const name = MONTH_NAMES[date.getMonth()];
+        return name.charAt(0).toUpperCase() + name.slice(1) + ' ' + date.getFullYear();
+    }
+
+    function renderMonthNav() {
+        const label = document.getElementById('month-label');
+        if (label) {
+            label.textContent = formatMonthLabel(currentMonth);
+        }
+    }
+
+    function setMonth(delta) {
+        currentMonth = addMonths(currentMonth, delta);
+        renderMonthNav();
+    }
+
+    function initMonthNav() {
+        const prevButton = document.getElementById('btn-prev-month');
+        const nextButton = document.getElementById('btn-next-month');
+        if (prevButton) {
+            prevButton.addEventListener('click', function () {
+                setMonth(-1);
+            });
+        }
+        if (nextButton) {
+            nextButton.addEventListener('click', function () {
+                setMonth(1);
+            });
+        }
+        renderMonthNav();
+    }
+
     window.BoulangerieStore = {
         STORAGE_KEY: STORAGE_KEY,
         DEFAULT_RATE: DEFAULT_RATE,
@@ -117,4 +174,6 @@
         load: load,
         save: save
     };
+
+    initMonthNav();
 })();
