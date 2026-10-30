@@ -279,7 +279,28 @@
     }
 
     function renderContract(data) {
-        setText('contract-rate', formatMoney(data.rate) + ' / h');
+        const input = document.getElementById('contract-rate');
+        if (input) {
+            input.value = String(data.rate);
+        }
+    }
+
+    function initContract() {
+        const input = document.getElementById('contract-rate');
+        if (!input) {
+            return;
+        }
+        input.addEventListener('change', function () {
+            const rate = Number(input.value);
+            if (!Number.isFinite(rate) || rate < 0) {
+                renderContract(load());
+                return;
+            }
+            const data = load();
+            data.rate = rate;
+            save(data);
+            renderAll();
+        });
     }
 
     function renderCards(data) {
@@ -414,5 +435,6 @@
     };
 
     initMonthNav();
+    initContract();
     renderAll();
 })();

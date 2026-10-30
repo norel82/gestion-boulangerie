@@ -1,10 +1,10 @@
 # TASKS.md
 
 ## IN-PROGRESS
-- [ ] Aucun
+- [ ] Étape 6b - Ajout, modification et copie de journées
 
 ## TODO
-- [ ] Étape 6 - CRUD + modales
+- [ ] Étape 6c - Suppression d'une journée (confirmation)
 - [ ] Étape 7 - Import/Export/Suppression totale
 - [ ] Étape 8 - Polish + tests rapides
 

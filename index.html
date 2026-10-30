@@ -153,6 +153,14 @@
             font-weight: 600;
         }
 
+        .contract-input {
+            padding: 0.4rem 0.5rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font: inherit;
+            max-width: 160px;
+        }
+
         .actions-row {
             display: flex;
             flex-wrap: wrap;
@@ -411,8 +419,8 @@
             <div class="section-body">
                 <div class="contract-grid">
                     <div class="contract-item">
-                        <span class="contract-label">Taux horaire brut</span>
-                        <span class="contract-value" id="contract-rate">--</span>
+                        <label class="contract-label" for="contract-rate">Taux horaire brut (€/h)</label>
+                        <input id="contract-rate" class="contract-input" type="number" min="0" step="0.01" inputmode="decimal">
                     </div>
                     <div class="contract-item">
                         <span class="contract-label">Majoration dimanche</span>
