@@ -313,11 +313,75 @@
         }
     }
 
+    function renderWeeks(data) {
+        const container = document.getElementById('weeks-list');
+        if (!container) {
+            return;
+        }
+        const days = monthDays(data.days, currentMonth);
+        container.textContent = '';
+
+        if (days.length === 0) {
+            const message = document.createElement('p');
+            message.textContent = 'Aucune journée pour ce mois.';
+            message.style.color = 'var(--muted)';
+            message.style.margin = '0';
+            container.appendChild(message);
+            return;
+        }
+
+        groupDaysByWeek(days).forEach(function (group) {
+            const totals = sumDays(group.days, data.rate);
+            const card = document.createElement('article');
+            card.className = 'week-card';
+
+            const header = document.createElement('div');
+            header.className = 'week-header';
+            const title = document.createElement('strong');
+            title.textContent = 'Semaine du ' + formatDateFr(group.start);
+            const summary = document.createElement('span');
+            summary.textContent = formatDuration(totals.minutes) + ' · ' + formatMoney(totals.pay);
+            header.appendChild(title);
+            header.appendChild(summary);
+
+            const body = document.createElement('div');
+            body.className = 'week-body';
+            group.days.forEach(function (day) {
+                const line = document.createElement('div');
+                line.textContent =
+                    formatDateFr(day.date) +
+                    ' · ' +
+                    day.start +
+                    ' – ' +
+                    day.end +
+                    ' · ' +
+                    formatDuration(dayDurationMinutes(day));
+                body.appendChild(line);
+            });
+
+            const totalsLine = document.createElement('div');
+            totalsLine.className = 'week-totals';
+            totalsLine.textContent =
+                'Total : ' +
+                formatDuration(totals.minutes) +
+                ' · ' +
+                totals.count +
+                ' jour(s) · ' +
+                formatMoney(totals.pay);
+            body.appendChild(totalsLine);
+
+            card.appendChild(header);
+            card.appendChild(body);
+            container.appendChild(card);
+        });
+    }
+
     function renderAll() {
         const data = load();
         renderContract(data);
         renderCards(data);
         renderDays(data);
+        renderWeeks(data);
     }
 
     window.BoulangerieStore = {
