@@ -1,11 +1,10 @@
 # TASKS.md
 
 ## IN-PROGRESS
-- [ ] Étape 6c - Suppression d'une journée (confirmation)
+- [ ] Aucun
 
 ## TODO
-- [ ] Aucun
-- [ ] Étape 7 - Import/Export/Suppression totale
+- [ ] Étape 7 - Import/Export/Suppression totale (Export JSON, Import JSON avec normalisation, Suppression totale avec confirmation)
 - [ ] Étape 8 - Polish + tests rapides
 
 ## DONE
@@ -18,6 +17,7 @@
 - [x] Étape 5 - Affichage UI (5a contrat/cartes/liste, 5b résumé hebdomadaire)
 - [x] Étape 6a - Édition du taux horaire
 - [x] Étape 6b - Ajout, modification et copie de journées
+- [x] Étape 6c - Suppression d'une journée (confirmation)
 
 ## BLOCKED
 - [ ] Aucun

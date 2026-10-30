@@ -4,14 +4,14 @@
 2026-10-30
 
 ## État général
-En cours - Étape 6 (6a/6b terminées, 6c à faire)
+En cours - Étape 6 terminée
 
 ## Stack
 HTML/CSS/JS vanilla (index.html + app.js, sans build). Justification: simple, local-first.
 
 ## Structure
 - index.html (squelette UI)
-- app.js (store, navigation, calculs, rendu, taux + ajout/modif/copie journées)
+- app.js (store, navigation, calculs, rendu, taux + CRUD complet)
 
 ## Fonctionnel
 - [x] Squelette UI (en-tête, nav mois, cartes, contrat, actions, liste, résumés, modales)
@@ -22,13 +22,11 @@ HTML/CSS/JS vanilla (index.html + app.js, sans build). Justification: simple, lo
 - [x] Affichage résumé hebdomadaire (5b)
 - [x] Édition du taux horaire (carte Mon contrat)
 - [x] Ajout, modification et copie de journées (modale)
-- [ ] Suppression d'une journée
-- [ ] Import/Export
+- [x] Suppression d'une journée (confirmation)
+- [ ] Import/Export/Suppression totale
 
 ## En cours / Partiel
-- [x] Étape 6a - Édition du taux horaire
-- [x] Étape 6b - Ajout, modification et copie de journées
-- [ ] Étape 6c - Suppression d'une journée
+- [ ] Étape 7 - Import/Export/Suppression totale (à démarrer)
 
 ## Cassé / À corriger
 - [ ] Aucun

@@ -312,10 +312,10 @@
         setText('card-salary', formatMoney(monthTotals.pay));
     }
 
-    function createActionButton(label, onClick) {
+    function createActionButton(label, onClick, extraClass) {
         const button = document.createElement('button');
         button.type = 'button';
-        button.className = 'btn';
+        button.className = extraClass ? 'btn ' + extraClass : 'btn';
         button.textContent = label;
         button.addEventListener('click', onClick);
         return button;
@@ -345,6 +345,15 @@
                 createActionButton('Copier', function () {
                     openDayModal('copy', day);
                 })
+            );
+            actions.appendChild(
+                createActionButton(
+                    'Supprimer',
+                    function () {
+                        openConfirmDelete(day);
+                    },
+                    'btn-danger'
+                )
             );
             row.appendChild(actions);
             tbody.appendChild(row);
@@ -569,6 +578,75 @@
         }
     }
 
+    function openConfirmDelete(day) {
+        const text = document.getElementById('modal-confirm-text');
+        const action = document.getElementById('confirm-action');
+        const id = document.getElementById('confirm-id');
+        if (text) {
+            text.textContent = 'Supprimer la journée du ' + formatDateFr(day.date) + ' ?';
+        }
+        if (action) {
+            action.value = 'delete-day';
+        }
+        if (id) {
+            id.value = day.id;
+        }
+        openModal(document.getElementById('modal-confirm'));
+    }
+
+    function confirmAction() {
+        const action = document.getElementById('confirm-action');
+        const id = document.getElementById('confirm-id');
+        if (!action || !id) {
+            return;
+        }
+
+        const data = load();
+        if (action.value === 'delete-day') {
+            data.days = data.days.filter(function (day) {
+                return day.id !== id.value;
+            });
+            save(data);
+        }
+
+        if (action) {
+            action.value = '';
+        }
+        if (id) {
+            id.value = '';
+        }
+        closeModal(document.getElementById('modal-confirm'));
+        renderAll();
+    }
+
+    function initConfirmModal() {
+        const okButton = document.getElementById('modal-confirm-ok');
+        const closeButton = document.getElementById('modal-confirm-close');
+        const cancelButton = document.getElementById('modal-confirm-cancel');
+        const modal = document.getElementById('modal-confirm');
+
+        if (okButton) {
+            okButton.addEventListener('click', confirmAction);
+        }
+        if (closeButton) {
+            closeButton.addEventListener('click', function () {
+                closeModal(modal);
+            });
+        }
+        if (cancelButton) {
+            cancelButton.addEventListener('click', function () {
+                closeModal(modal);
+            });
+        }
+        if (modal) {
+            modal.addEventListener('click', function (event) {
+                if (event.target === modal) {
+                    closeModal(modal);
+                }
+            });
+        }
+    }
+
     function renderAll() {
         const data = load();
         renderContract(data);
@@ -609,5 +687,6 @@
     initMonthNav();
     initContract();
     initDayModal();
+    initConfirmModal();
     renderAll();
 })();
