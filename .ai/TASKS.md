@@ -1,7 +1,7 @@
 # TASKS.md
 
 ## IN-PROGRESS
-- [ ] Étape 2 - Modèle données + stockage (localStorage `boulangerie_hours`)
+- [ ] Aucun
 
 ## TODO
 - [ ] Étape 3 - Calendrier/mois + navigation (semaine lundi->dimanche)
@@ -15,6 +15,7 @@
 - [x] Lire la mémoire et proposer un plan
 - [x] Valider le plan
 - [x] Étape 1 - Squelette index.html (structure, CSS responsive, modales)
+- [x] Étape 2 - Modèle données + stockage (localStorage `boulangerie_hours`)
 
 ## BLOCKED
 - [ ] Aucun
