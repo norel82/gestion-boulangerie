@@ -4,25 +4,28 @@
 2026-10-30
 
 ## État général
-En cours - Étape 4 terminée
+En cours - Étape 5 (5a terminée, 5b à faire)
 
 ## Stack
 HTML/CSS/JS vanilla (index.html + app.js, sans build). Justification: simple, local-first.
 
 ## Structure
 - index.html (squelette UI)
-- app.js (store: constantes, modèle, load/save, normalisation + navigation mensuelle + calculs)
+- app.js (store, navigation mensuelle, calculs + rendu contrat/cartes/liste)
 
 ## Fonctionnel
 - [x] Squelette UI (en-tête, nav mois, cartes, contrat, actions, liste, résumés, modales)
 - [x] Données + stockage
 - [x] Navigation mensuelle (mois courant, précédent/suivant, label français)
 - [x] Calculs (durée minuit, semaine lundi->dimanche, dimanche 20 %, totaux)
+- [x] Affichage contrat, cartes et liste du mois (5a)
+- [ ] Affichage résumé hebdomadaire (5b)
 - [ ] CRUD
 - [ ] Import/Export
 
 ## En cours / Partiel
-- [ ] Étape 5 - Affichage UI (à démarrer)
+- [x] Étape 5a - Affichage contrat, cartes et liste
+- [ ] Étape 5b - Affichage résumé hebdomadaire
 
 ## Cassé / À corriger
 - [ ] Aucun

@@ -144,6 +144,7 @@
     function setMonth(delta) {
         currentMonth = addMonths(currentMonth, delta);
         renderMonthNav();
+        renderAll();
     }
 
     function initMonthNav() {
@@ -255,6 +256,70 @@
         });
     }
 
+    function formatDateFr(dateStr) {
+        const date = parseDateKey(dateStr);
+        return pad2(date.getDate()) + '/' + pad2(date.getMonth() + 1) + '/' + date.getFullYear();
+    }
+
+    function formatMoney(value) {
+        return Number(value).toFixed(2).replace('.', ',') + ' €';
+    }
+
+    function setText(id, text) {
+        const element = document.getElementById(id);
+        if (element) {
+            element.textContent = text;
+        }
+    }
+
+    function createCell(text) {
+        const cell = document.createElement('td');
+        cell.textContent = text;
+        return cell;
+    }
+
+    function renderContract(data) {
+        setText('contract-rate', formatMoney(data.rate) + ' / h');
+    }
+
+    function renderCards(data) {
+        const monthTotals = computeMonthTotals(data.days, data.rate, currentMonth);
+        const weekTotals = computeCurrentWeekTotals(data.days, data.rate);
+        setText('card-this-week', formatDuration(weekTotals.minutes));
+        setText('card-this-month', formatDuration(monthTotals.minutes));
+        setText('card-days', String(monthTotals.count));
+        setText('card-salary', formatMoney(monthTotals.pay));
+    }
+
+    function renderDays(data) {
+        const tbody = document.getElementById('days-tbody');
+        if (!tbody) {
+            return;
+        }
+        const days = monthDays(data.days, currentMonth);
+        tbody.textContent = '';
+        days.forEach(function (day) {
+            const row = document.createElement('tr');
+            row.appendChild(createCell(formatDateFr(day.date)));
+            row.appendChild(createCell(day.start + ' – ' + day.end));
+            row.appendChild(createCell(formatDuration(dayDurationMinutes(day))));
+            row.appendChild(createCell(''));
+            tbody.appendChild(row);
+        });
+
+        const empty = document.getElementById('empty-list');
+        if (empty) {
+            empty.style.display = days.length === 0 ? 'block' : 'none';
+        }
+    }
+
+    function renderAll() {
+        const data = load();
+        renderContract(data);
+        renderCards(data);
+        renderDays(data);
+    }
+
     window.BoulangerieStore = {
         STORAGE_KEY: STORAGE_KEY,
         DEFAULT_RATE: DEFAULT_RATE,
@@ -285,4 +350,5 @@
     };
 
     initMonthNav();
+    renderAll();
 })();

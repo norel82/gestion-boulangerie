@@ -1,10 +1,10 @@
 # TASKS.md
 
 ## IN-PROGRESS
-- [ ] Aucun
+- [ ] Étape 5b - Affichage résumé hebdomadaire
 
 ## TODO
-- [ ] Étape 5 - Affichage UI
+- [ ] Étape 5 - Affichage UI (5a fait)
 - [ ] Étape 6 - CRUD + modales
 - [ ] Étape 7 - Import/Export/Suppression totale
 - [ ] Étape 8 - Polish + tests rapides
