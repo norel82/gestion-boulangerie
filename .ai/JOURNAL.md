@@ -17,4 +17,4 @@
 - Étape 5b validée : résumé par semaine lundi->dimanche (lignes du jour + totaux heures/jours/salaire) et état vide. Vérifié avec DOM simulé. Commit `d2a0a5c`.
 - Étape 6a validée : taux horaire éditable dans « Mon contrat » (input number, sauvegarde au change, recalcul). Test simulé OK. Commit `a83672b`.
 - Étape 6b validée : ajout/modification/copie de journées via modale, validation date/heures, boutons par ligne, re-render. Tests simulés OK. Commit `52b0bcc`.
-- Étape 6c validée : suppression d'une journée avec modale de confirmation, bouton Supprimer par ligne, re-render. Tests simulés OK. Commit à venir.
+- Étape 6c validée : suppression d'une journée avec modale de confirmation, bouton Supprimer par ligne, re-render. Tests simulés OK. Commit `6414764`.
